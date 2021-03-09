@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 // save reference to important DOM elements
 var dateDisplayEl = $('#currentDay');
-var taskTextEl = $("textarea");
+var taskDisplayEl = $('')
 
 
 // handle displaying the date
@@ -13,23 +13,41 @@ function displayDate() {
 
 displayDate();
 
-// //Save responses to local storage
-// $('.saveBtn').on('click', function () {
-//   var task = $(this).siblings('.description').val();
-//   console.log("task", task);
-//   localStorage.setItem("task", task) ;
-//   taskTextEl.text(task);
-// });
+//Save responses to local storage
+$('.saveBtn').on('click', function () {
+var task = $(this).siblings('.description').val();
+console.log("task", task);
+localStorage.setItem("task", task);
+});
 
-//pseudo code:
-//Change color of rows based on whether they are in the past, present or future
-//assign each time block a start time and an end time
-//write a function that compares the currentTime to the start/end time of each time block
-//if the current time is after the time block, then the textarea background is gray
-//if the current time is during the time block, then the textarea background is red
-//if they current time is before the time, then the textarea background is green
+//get current time
+function getTime () {
+  var timeNow = moment().format("H");
+  console.log(timeNow);
+}
+
+getTime();
+
+//compare block times to current time
+$(".time-block").each(function(i, elem){
+  console.log(elem);
+  let elmID = elem.id
+  let blockHour = elemID.replace("hour-", "");
+  if (blockHour > timeNow){
+    then (document.getElementByTagName("textarea").style.background = "green");
+  }
+  if (blockHour = TimeNow){
+    then (document.getElementByTagName("textarea").style.background = "red");
+  }
+  if (blockHour < timeNow) {
+    then (document.getElementByTagName("textarea").style.background = "gray");
+  }
+});
+
+//Add an icon to the save button
   
 });
-//Add an icon to the save button
+
+
 
 
