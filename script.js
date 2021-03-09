@@ -28,7 +28,7 @@ function getTime () {
 
 getTime();
 
-//compare block times to current time
+//compare block times to current time - TA demo
 $(".time-block").each(function(i, elem){
   console.log(elem);
   let elmID = elem.id
